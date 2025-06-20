@@ -69,9 +69,6 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100%;
 }
 
 body {
@@ -79,12 +76,9 @@ body {
     background: var(--primary-bg);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
     position: relative;
     margin: 0;
     padding: 0;
-    width: 100%;
-    max-width: 100%;
 }
 
 /* ==========================================
@@ -659,7 +653,6 @@ body {
 .main-content {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
 }
 
 /* ==========================================
@@ -701,7 +694,7 @@ body {
    ========================================== */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-xl);
 }
 
@@ -1379,7 +1372,7 @@ body {
    ========================================== */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-xl);
 }
 
