@@ -11,6 +11,11 @@
     box-sizing: border-box;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
 :root {
     /* Revolutionary Color Palette */
     --primary-bg: #0a0f1c;
@@ -65,6 +70,8 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
 }
 
 body {
@@ -74,6 +81,10 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* ==========================================
@@ -307,6 +318,8 @@ body {
 .hero-section {
     position: relative;
     min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -320,6 +333,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    max-width: 100%;
     z-index: 1;
 }
 
@@ -329,13 +343,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    max-width: 100%;
     opacity: 0.3;
     z-index: 2;
+    overflow: hidden;
 }
 
 .network-svg {
     width: 100%;
     height: 100%;
+    max-width: 100%;
 }
 
 .hero-content {
@@ -348,15 +365,18 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-3xl);
     align-items: center;
+    box-sizing: border-box;
 }
 
 .hero-text {
     max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .hero-greeting {
     font-size: 1.2rem;
-    color: var(--text-accent);
+    color: var(--text-primary);
     margin-bottom: var(--space-sm);
     font-weight: 500;
 }
@@ -407,7 +427,7 @@ body {
 
 .hero-description {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     margin-bottom: var(--space-xl);
     line-height: 1.7;
 }
@@ -468,15 +488,20 @@ body {
 .hero-visual {
     position: relative;
     height: 500px;
+    width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .hologram-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: min(400px, 90vw);
+    height: min(400px, 90vw);
+    max-width: 100%;
 }
 
 .hologram-layers {
@@ -629,6 +654,15 @@ body {
 }
 
 /* ==========================================
+   MAIN CONTENT
+   ========================================== */
+.main-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ==========================================
    SECTIONS
    ========================================== */
 .projects-section,
@@ -638,6 +672,8 @@ body {
     padding: var(--space-3xl) var(--space-lg);
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .section-header {
@@ -1049,6 +1085,101 @@ body {
     font-weight: 700;
 }
 
+.data-visualization {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-lines {
+    position: relative;
+    width: 100%;
+    height: 60%;
+}
+
+.chart-line {
+    position: absolute;
+    height: 2px;
+    border-radius: 1px;
+    top: 50%;
+}
+
+.stock-line {
+    width: 80%;
+    left: 10%;
+    background: var(--gradient-primary);
+    transform: translateY(-10px);
+}
+
+.prediction-line {
+    width: 60%;
+    right: 10%;
+    background: var(--gradient-secondary);
+    transform: translateY(10px);
+}
+
+.data-points {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.data-point {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    animation: dataPointPulse 2s ease-in-out infinite;
+}
+
+.data-point:nth-child(1) {
+    top: 40%;
+    left: 30%;
+    animation-delay: 0s;
+}
+
+.data-point:nth-child(2) {
+    top: 60%;
+    left: 60%;
+    animation-delay: 0.7s;
+}
+
+.data-point:nth-child(3) {
+    top: 30%;
+    right: 20%;
+    animation-delay: 1.4s;
+}
+
+.prediction-accuracy {
+    position: absolute;
+    bottom: var(--space-sm);
+    left: var(--space-sm);
+}
+
+.accuracy-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--neon-cyan);
+    font-weight: 500;
+}
+
+@keyframes dataPointPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 0.7; 
+    }
+    50% { 
+        transform: scale(1.5); 
+        opacity: 1; 
+    }
+}
+
 .project-content {
     padding: var(--space-lg);
 }
@@ -1273,127 +1404,79 @@ body {
     margin-bottom: var(--space-md);
 }
 
-.skill-items {
+.skill-list {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
+    flex-wrap: wrap;
+    gap: var(--space-sm);
 }
-
-.skill-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    padding: var(--space-sm);
-    background: var(--accent-bg);
-    border-radius: var(--border-radius);
-    transition: all 0.3s var(--ease-precision);
-}
-
-.skill-item:hover {
-    background: var(--secondary-bg);
-    transform: translateX(5px);
-}
-
-.skill-icon {
-    font-size: 1.5rem;
-    width: 40px;
-    text-align: center;
-}
-
-.skill-name {
-    flex: 1;
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.skill-proficiency {
-    position: relative;
-    width: 100px;
-    height: 6px;
-    background: var(--accent-bg);
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.skill-proficiency::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: var(--gradient-primary);
-    border-radius: 3px;
-    transition: width 1s var(--ease-precision);
-}
-
-.skill-proficiency[data-level="90"]::before { width: 90%; }
-.skill-proficiency[data-level="85"]::before { width: 85%; }
-.skill-proficiency[data-level="80"]::before { width: 80%; }
-.skill-proficiency[data-level="75"]::before { width: 75%; }
 
 /* ==========================================
    CONTACT SECTION
    ========================================== */
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl);
-    align-items: center;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
-}
-
-.contact-item {
-    display: flex;
+    gap: var(--space-xl);
     align-items: center;
-    gap: var(--space-md);
-    padding: var(--space-md);
-    background: var(--surface-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    transition: all 0.3s var(--ease-precision);
 }
 
-.contact-item:hover {
-    border-color: var(--neon-blue);
-    transform: translateX(5px);
-}
-
-.contact-icon {
-    font-size: 1.5rem;
-    width: 40px;
+.contact-intro {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1.1rem;
     text-align: center;
 }
 
 .contact-details {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+.contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-item:last-child {
+    border-bottom: none;
 }
 
 .contact-label {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    color: var(--text-primary);
+    min-width: 80px;
+    text-align: left;
+}
+
+.contact-link {
+    color: var(--text-accent);
+    text-decoration: none;
+    transition: all 0.3s var(--ease-precision);
+    flex: 1;
+    text-align: right;
+}
+
+.contact-link:hover {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
 }
 
 .contact-value {
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.contact-cta {
-    text-align: center;
-}
-
-.cta-text {
     color: var(--text-secondary);
-    margin-bottom: var(--space-lg);
-    line-height: 1.6;
+    flex: 1;
+    text-align: right;
 }
 
 /* ==========================================
@@ -1542,11 +1625,6 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
-    }
-    
     .achievement-stats {
         gap: var(--space-lg);
     }
@@ -1566,6 +1644,22 @@ body {
     
     .timeline-line {
         display: none;
+    }
+    
+    .contact-details {
+        max-width: 100%;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-xs);
+    }
+    
+    .contact-label,
+    .contact-link,
+    .contact-value {
+        text-align: center;
     }
 }
 
