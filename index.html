@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Kyle Chen | Robotics Engineer & AI Innovator</title>
+    <meta name="title" content="Kyle Chen | Robotics Engineer & AI Innovator">
+    <meta name="description" content="Electrical Engineering student at UC San Diego specializing in robotics, computer vision, and autonomous systems. Building the future through innovative AI solutions.">
+    <meta name="keywords" content="Kyle Chen, Robotics Engineer, Computer Vision, AI, UCSD, Autonomous Systems, FPGA, Machine Learning">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Kyle Chen">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kylechen321.github.io/">
+    <meta property="og:title" content="Kyle Chen | Robotics Engineer & AI Innovator">
+    <meta property="og:description" content="Electrical Engineering student specializing in robotics, computer vision, and autonomous systems. Building the future through innovative AI solutions.">
+    <meta property="og:site_name" content="Kyle Chen Portfolio">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kylechen321.github.io/">
+    <meta property="twitter:title" content="Kyle Chen | Robotics Engineer & AI Innovator">
+    <meta property="twitter:description" content="Electrical Engineering student specializing in robotics, computer vision, and autonomous systems.">
+    
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#0a0f1c">
+    <meta name="msapplication-TileColor" content="#0a0f1c">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js for 3D Graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP for Advanced Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cursor Tracker -->
+    <div class="cursor-tracker" id="cursor-tracker"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+    
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-circuit">
+                <div class="circuit-line horizontal"></div>
+                <div class="circuit-line vertical"></div>
+                <div class="circuit-node"></div>
+                <div class="circuit-node"></div>
+                <div class="circuit-node"></div>
+            </div>
+            <div class="loading-text">Initializing Neural Networks...</div>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navigation" id="navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">KYLE</span>
+                <div class="logo-circuit">
+                    <div class="circuit-dots"></div>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link" data-section="home">
+                    <span class="nav-text">Home</span>
+                    <div class="nav-line"></div>
+                </a>
+                <a href="#projects" class="nav-link" data-section="projects">
+                    <span class="nav-text">Projects</span>
+                    <div class="nav-line"></div>
+                </a>
+                <a href="#experience" class="nav-link" data-section="experience">
+                    <span class="nav-text">Experience</span>
+                    <div class="nav-line"></div>
+                </a>
+                <a href="#skills" class="nav-link" data-section="skills">
+                    <span class="nav-text">Skills</span>
+                    <div class="nav-line"></div>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <span class="nav-text">Contact</span>
+                    <div class="nav-line"></div>
+                </a>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <!-- 3D Canvas Background -->
+            <canvas class="hero-canvas" id="hero-canvas"></canvas>
+            
+            <!-- Neural Network Visualization -->
+            <div class="neural-network" id="neural-network">
+                <svg class="network-svg" viewBox="0 0 800 600">
+                    <defs>
+                        <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0080ff;stop-opacity:0.3" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-greeting">Hello, I'm</div>
+                    <h1 class="hero-name">
+                        <span class="name-letter" data-letter="K">K</span>
+                        <span class="name-letter" data-letter="Y">Y</span>
+                        <span class="name-letter" data-letter="L">L</span>
+                        <span class="name-letter" data-letter="E">E</span>
+                        <span class="name-space"></span>
+                        <span class="name-letter" data-letter="C">C</span>
+                        <span class="name-letter" data-letter="H">H</span>
+                        <span class="name-letter" data-letter="E">E</span>
+                        <span class="name-letter" data-letter="N">N</span>
+                    </h1>
+                    <div class="hero-title">
+                        <span class="title-line">Robotics Engineer</span>
+                        <span class="title-line">& AI Innovator</span>
+                    </div>
+                    <p class="hero-description">
+                        Building autonomous systems that bridge the gap between human intuition and machine precision. 
+                        Specializing in computer vision, FPGA design, and intelligent robotics.
+                    </p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="hero-actions">
+                        <button class="cta-button primary" data-section="projects">
+                            <span class="button-text">Explore Projects</span>
+                            <div class="button-circuit"></div>
+                        </button>
+                        <button class="cta-button secondary" data-section="contact">
+                            <span class="button-text">Let's Connect</span>
+                            <div class="button-line"></div>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual -->
+                <div class="hero-visual">
+                    <div class="hologram-container">
+                        <!-- 3D Hologram Effect -->
+                        <div class="hologram-layers">
+                            <div class="hologram-layer" data-depth="0.1"></div>
+                            <div class="hologram-layer" data-depth="0.3"></div>
+                            <div class="hologram-layer" data-depth="0.5"></div>
+                        </div>
+                        
+                        <!-- Circuit Patterns -->
+                        <div class="circuit-patterns">
+                            <div class="circuit-trace trace-1"></div>
+                            <div class="circuit-trace trace-2"></div>
+                            <div class="circuit-trace trace-3"></div>
+                            <div class="circuit-junction"></div>
+                        </div>
+                        
+                        <!-- Data Streams -->
+                        <div class="data-streams">
+                            <div class="data-particle"></div>
+                            <div class="data-particle"></div>
+                            <div class="data-particle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Achievement Stats -->
+            <div class="achievement-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-value="95">0</div>
+                    <div class="stat-label">% Vision Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-value="4">0</div>
+                    <div class="stat-label">Major Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-value="2">0</div>
+                    <div class="stat-label">Research Labs</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section" id="projects">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Innovation through code, circuits, and creativity</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Volley Vision Project -->
+                <div class="project-card" data-project="volley-vision" data-tech="computer-vision">
+                    <div class="project-visual">
+                        <div class="court-visualization">
+                            <div class="court-lines"></div>
+                            <div class="ball-trajectory">
+                                <div class="trajectory-point"></div>
+                                <div class="trajectory-point"></div>
+                                <div class="trajectory-point"></div>
+                            </div>
+                            <div class="detection-box"></div>
+                        </div>
+                        <div class="accuracy-meter">
+                            <div class="meter-value" data-accuracy="95">95%</div>
+                            <div class="meter-label">Detection Accuracy</div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Volley Vision</h3>
+                        <p class="project-description">
+                            Advanced computer vision system achieving 95% accuracy in real-time volleyball tracking. 
+                            Implemented custom YOLO architecture with OpenCV optimization.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">YOLO</span>
+                            <span class="tech-tag">Deep Learning</span>
+                        </div>
+                        <div class="project-actions">
+                            <button class="project-btn primary">View Details</button>
+                            <button class="project-btn secondary">GitHub</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Robot Project -->
+                <div class="project-card" data-project="music-robot" data-tech="robotics">
+                    <div class="project-visual">
+                        <div class="audio-visualization">
+                            <div class="waveform">
+                                <div class="wave-bar" style="height: 30%"></div>
+                                <div class="wave-bar" style="height: 60%"></div>
+                                <div class="wave-bar" style="height: 45%"></div>
+                                <div class="wave-bar" style="height: 80%"></div>
+                                <div class="wave-bar" style="height: 35%"></div>
+                                <div class="wave-bar" style="height: 70%"></div>
+                            </div>
+                            <div class="frequency-spectrum"></div>
+                        </div>
+                        <div class="robot-status">
+                            <div class="status-indicator active"></div>
+                            <div class="status-label">Following Beat</div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Rhythmic Robot</h3>
+                        <p class="project-description">
+                            Autonomous robot that follows music beats using real-time audio processing and motor control. 
+                            Features custom FFT algorithms and responsive movement patterns.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">FFT</span>
+                            <span class="tech-tag">Motor Control</span>
+                        </div>
+                        <div class="project-actions">
+                            <button class="project-btn primary">View Details</button>
+                            <button class="project-btn secondary">Demo Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARLA Autonomous Vehicle -->
+                <div class="project-card" data-project="carla-av" data-tech="autonomous-systems">
+                    <div class="project-visual">
+                        <div class="vehicle-simulation">
+                            <div class="road-environment">
+                                <div class="road-line"></div>
+                                <div class="vehicle-path"></div>
+                                <div class="obstacle"></div>
+                            </div>
+                            <div class="sensor-data">
+                                <div class="lidar-points"></div>
+                                <div class="camera-view"></div>
+                            </div>
+                        </div>
+                        <div class="simulation-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">CARLA</span>
+                                <span class="stat-label">Platform</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Autonomous Navigation</h3>
+                        <p class="project-description">
+                            Developed perception and planning algorithms for autonomous vehicles in CARLA simulator. 
+                            Implemented sensor fusion and path planning for complex urban environments.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">CARLA</span>
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">Sensor Fusion</span>
+                        </div>
+                        <div class="project-actions">
+                            <button class="project-btn primary">View Details</button>
+                            <button class="project-btn secondary">Research</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FPGA Design Project -->
+                <div class="project-card" data-project="fpga-design" data-tech="hardware">
+                    <div class="project-visual">
+                        <div class="circuit-design">
+                            <div class="logic-gates">
+                                <div class="gate and-gate"></div>
+                                <div class="gate or-gate"></div>
+                                <div class="gate not-gate"></div>
+                            </div>
+                            <div class="signal-flow">
+                                <div class="signal-line active"></div>
+                                <div class="signal-line"></div>
+                                <div class="signal-line active"></div>
+                            </div>
+                        </div>
+                        <div class="fpga-status">
+                            <div class="clock-signal">
+                                <div class="clock-pulse"></div>
+                            </div>
+                            <div class="frequency-display">125 MHz</div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">FPGA Signal Processing</h3>
+                        <p class="project-description">
+                            High-performance digital signal processing on FPGA hardware. Custom VHDL implementations 
+                            for real-time data acquisition and processing systems.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">VHDL</span>
+                            <span class="tech-tag">Verilog</span>
+                            <span class="tech-tag">Xilinx</span>
+                            <span class="tech-tag">DSP</span>
+                        </div>
+                        <div class="project-actions">
+                            <button class="project-btn primary">View Details</button>
+                            <button class="project-btn secondary">Schematics</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience-section" id="experience">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">Research and development journey</p>
+            </div>
+            
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="experience-item">
+                    <div class="experience-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-pulse"></div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Undergraduate Researcher</h3>
+                            <div class="experience-company">DARE Lab - UC San Diego</div>
+                            <div class="experience-period">2023 - Present</div>
+                        </div>
+                        <div class="experience-description">
+                            <p>Developing advanced computer vision systems and autonomous navigation algorithms. 
+                            Leading research in multi-modal sensor fusion and real-time perception systems.</p>
+                        </div>
+                        <div class="experience-achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🎯</span>
+                                <span class="achievement-text">95% accuracy in object detection systems</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🚗</span>
+                                <span class="achievement-text">Autonomous vehicle navigation in CARLA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-pulse"></div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Engineering Student</h3>
+                            <div class="experience-company">UC San Diego</div>
+                            <div class="experience-period">2022 - Present</div>
+                        </div>
+                        <div class="experience-description">
+                            <p>Electrical Engineering with focus on robotics, AI, and embedded systems. 
+                            Active in research projects and technical leadership roles.</p>
+                        </div>
+                        <div class="experience-achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🏆</span>
+                                <span class="achievement-text">Dean's List recognition</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🤖</span>
+                                <span class="achievement-text">Robotics club technical lead</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section" id="skills">
+            <div class="section-header">
+                <h2 class="section-title">Technical Arsenal</h2>
+                <p class="section-subtitle">Tools and technologies I master</p>
+            </div>
+            
+            <div class="skills-container">
+                <!-- Programming Languages -->
+                <div class="skill-category" data-category="languages">
+                    <h3 class="category-title">Programming Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="python">
+                            <div class="skill-icon">🐍</div>
+                            <div class="skill-name">Python</div>
+                            <div class="skill-proficiency" data-level="90"></div>
+                        </div>
+                        <div class="skill-item" data-skill="cpp">
+                            <div class="skill-icon">⚡</div>
+                            <div class="skill-name">C/C++</div>
+                            <div class="skill-proficiency" data-level="85"></div>
+                        </div>
+                        <div class="skill-item" data-skill="vhdl">
+                            <div class="skill-icon">🔧</div>
+                            <div class="skill-name">VHDL/Verilog</div>
+                            <div class="skill-proficiency" data-level="80"></div>
+                        </div>
+                        <div class="skill-item" data-skill="matlab">
+                            <div class="skill-icon">📊</div>
+                            <div class="skill-name">MATLAB</div>
+                            <div class="skill-proficiency" data-level="75"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI/ML Technologies -->
+                <div class="skill-category" data-category="ai-ml">
+                    <h3 class="category-title">AI/ML & Computer Vision</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="opencv">
+                            <div class="skill-icon">👁️</div>
+                            <div class="skill-name">OpenCV</div>
+                            <div class="skill-proficiency" data-level="90"></div>
+                        </div>
+                        <div class="skill-item" data-skill="yolo">
+                            <div class="skill-icon">🎯</div>
+                            <div class="skill-name">YOLO</div>
+                            <div class="skill-proficiency" data-level="85"></div>
+                        </div>
+                        <div class="skill-item" data-skill="tensorflow">
+                            <div class="skill-icon">🧠</div>
+                            <div class="skill-name">TensorFlow</div>
+                            <div class="skill-proficiency" data-level="80"></div>
+                        </div>
+                        <div class="skill-item" data-skill="pytorch">
+                            <div class="skill-icon">🔥</div>
+                            <div class="skill-name">PyTorch</div>
+                            <div class="skill-proficiency" data-level="75"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Robotics & Hardware -->
+                <div class="skill-category" data-category="robotics">
+                    <h3 class="category-title">Robotics & Hardware</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="ros">
+                            <div class="skill-icon">🤖</div>
+                            <div class="skill-name">ROS</div>
+                            <div class="skill-proficiency" data-level="85"></div>
+                        </div>
+                        <div class="skill-item" data-skill="arduino">
+                            <div class="skill-icon">🔌</div>
+                            <div class="skill-name">Arduino</div>
+                            <div class="skill-proficiency" data-level="90"></div>
+                        </div>
+                        <div class="skill-item" data-skill="fpga">
+                            <div class="skill-icon">⚙️</div>
+                            <div class="skill-name">FPGA Design</div>
+                            <div class="skill-proficiency" data-level="80"></div>
+                        </div>
+                        <div class="skill-item" data-skill="embedded">
+                            <div class="skill-icon">💾</div>
+                            <div class="skill-name">Embedded Systems</div>
+                            <div class="skill-proficiency" data-level="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="section-header">
+                <h2 class="section-title">Let's Build the Future</h2>
+                <p class="section-subtitle">Ready to collaborate on revolutionary robotics projects</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">kyle@example.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-details">
+                            <div class="contact-label">LinkedIn</div>
+                            <div class="contact-value">linkedin.com/in/kylechen</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🔗</div>
+                        <div class="contact-details">
+                            <div class="contact-label">GitHub</div>
+                            <div class="contact-value">github.com/kylechen321</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-cta">
+                    <p class="cta-text">Interested in discussing robotics, AI, or potential collaborations?</p>
+                    <button class="cta-button primary">
+                        <span class="button-text">Get In Touch</span>
+                        <div class="button-circuit"></div>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
