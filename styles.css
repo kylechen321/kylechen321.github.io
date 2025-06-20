@@ -306,6 +306,50 @@ body {
     transition: all 0.3s var(--ease-precision);
 }
 
+/* Mobile navigation styles */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 15, 28, 0.98);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid var(--border-color);
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-lg);
+        padding: var(--space-lg) var(--space-lg) var(--space-xl);
+        max-height: 0;
+        overflow: hidden;
+        z-index: 999;
+        /* Remove CSS transitions since we're using GSAP */
+    }
+    
+    .nav-menu.active {
+        /* GSAP will handle the max-height animation */
+        padding: var(--space-lg) var(--space-lg) var(--space-xl);
+    }
+    
+    .nav-toggle {
+        display: flex;
+        z-index: 1001;
+        position: relative;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
+
 /* ==========================================
    HERO SECTION
    ========================================== */

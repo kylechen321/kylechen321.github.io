@@ -8,7 +8,7 @@
 // ===========================================
 // GSAP SETUP & REGISTRATION
 // ===========================================
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin);
 
 // ===========================================
 // GLOBAL VARIABLES & CONFIGURATION
@@ -549,8 +549,47 @@ function initScrollAnimations() {
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
+    const navigation = document.querySelector('.navigation');
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
     
-    // Smooth scrolling
+    // Function to get precise navigation offset
+    function getNavOffset() {
+        const navHeight = navigation ? navigation.offsetHeight : 80;
+        // Use exact nav height to position section exactly at top edge below nav
+        return navHeight;
+    }
+    
+    // Instant mobile menu close
+    function closeMobileMenuInstant() {
+        if (window.innerWidth <= 768 && navMenu && navMenu.classList.contains('active')) {
+            // Remove classes immediately
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            // Set height to 0 instantly
+            gsap.set(navMenu, { maxHeight: 0 });
+        }
+    }
+    
+    // Precise smooth scrolling
+    function scrollToTarget(target) {
+        // Close mobile menu instantly if open
+        closeMobileMenuInstant();
+        
+        // Calculate exact position: target top - nav height
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        const navHeight = navigation ? navigation.offsetHeight : 80;
+        const scrollPosition = targetPosition - navHeight;
+        
+        // Scroll to exact position
+        gsap.to(window, {
+            duration: 0.8,
+            scrollTo: { y: scrollPosition },
+            ease: "power2.out"
+        });
+    }
+    
+    // Navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -558,25 +597,20 @@ function initNavigation() {
             const target = document.getElementById(targetId);
             
             if (target) {
-                gsap.to(window, {
-                    duration: 1.5,
-                    scrollTo: { y: target, offsetY: 80 },
-                    ease: "power3.inOut"
-                });
+                scrollToTarget(target);
             }
         });
     });
     
-    // Active section highlighting
-    ScrollTrigger.batch(sections, {
-        onEnter: (elements) => {
-            const currentSection = elements[0].id;
-            updateActiveNavLink(currentSection);
-        },
-        onEnterBack: (elements) => {
-            const currentSection = elements[0].id;
-            updateActiveNavLink(currentSection);
-        }
+    // Active section highlighting with precise positioning
+    sections.forEach(section => {
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top 100px", // Account for nav height
+            end: "bottom 100px",
+            onEnter: () => updateActiveNavLink(section.id),
+            onEnterBack: () => updateActiveNavLink(section.id)
+        });
     });
     
     // CTA buttons functionality
@@ -587,24 +621,59 @@ function initNavigation() {
                 e.preventDefault();
                 const target = document.getElementById(section);
                 if (target) {
-                    gsap.to(window, {
-                        duration: 1.5,
-                        scrollTo: { y: target, offsetY: 80 },
-                        ease: "power3.inOut"
-                    });
+                    scrollToTarget(target);
                 }
             }
         });
     });
     
     // Mobile menu toggle
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = navMenu.classList.contains('active');
+            
+            if (isActive) {
+                // Close with faster GSAP
+                gsap.to(navMenu, {
+                    maxHeight: 0,
+                    duration: 0.2,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                    }
+                });
+            } else {
+                // Open with faster GSAP
+                navMenu.classList.add('active');
+                navToggle.classList.add('active');
+                gsap.fromTo(navMenu, 
+                    { maxHeight: 0 },
+                    { 
+                        maxHeight: 400,
+                        duration: 0.25,
+                        ease: "power2.out"
+                    }
+                );
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                if (navMenu.classList.contains('active')) {
+                    gsap.to(navMenu, {
+                        maxHeight: 0,
+                        duration: 0.2,
+                        ease: "power2.inOut",
+                        onComplete: () => {
+                            navMenu.classList.remove('active');
+                            navToggle.classList.remove('active');
+                        }
+                    });
+                }
+            }
         });
     }
 }
