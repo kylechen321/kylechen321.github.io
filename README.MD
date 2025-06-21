@@ -21,7 +21,7 @@ I'm an Electrical Engineering student at UC Davis with a passion for innovation 
 ### Volley Vision
 **Computer Vision System for Sports Analytics**
 - Developed a computer vision system to accurately detect and measure pickleball speed, racket speed, and player movement speed
-- Achieved 95% detection accuracy using advanced object tracking algorithms
+- Implemented advanced object tracking algorithms for precise measurement
 - **Tech Stack:** Python, PyTorch, Computer Vision, Object Tracking
 
 ### Music Following Robot
