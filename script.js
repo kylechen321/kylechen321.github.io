@@ -549,47 +549,10 @@ function initScrollAnimations() {
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
-    const navigation = document.querySelector('.navigation');
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     
-    // Function to get precise navigation offset
-    function getNavOffset() {
-        const navHeight = navigation ? navigation.offsetHeight : 80;
-        // Use exact nav height to position section exactly at top edge below nav
-        return navHeight;
-    }
-    
-    // Instant mobile menu close
-    function closeMobileMenuInstant() {
-        if (window.innerWidth <= 768 && navMenu && navMenu.classList.contains('active')) {
-            // Remove classes immediately
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-            // Set height to 0 instantly
-            gsap.set(navMenu, { maxHeight: 0 });
-        }
-    }
-    
-    // Precise smooth scrolling
-    function scrollToTarget(target) {
-        // Close mobile menu instantly if open
-        closeMobileMenuInstant();
-        
-        // Calculate exact position: target top - nav height
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-        const navHeight = navigation ? navigation.offsetHeight : 80;
-        const scrollPosition = targetPosition - navHeight;
-        
-        // Scroll to exact position
-        gsap.to(window, {
-            duration: 0.8,
-            scrollTo: { y: scrollPosition },
-            ease: "power2.out"
-        });
-    }
-    
-    // Navigation links
+    // Simple smooth scrolling
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -597,21 +560,42 @@ function initNavigation() {
             const target = document.getElementById(targetId);
             
             if (target) {
-                scrollToTarget(target);
+                // Close mobile menu if open
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+                
+                // Smooth scroll to target
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
     });
     
-    // Active section highlighting with precise positioning
-    sections.forEach(section => {
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top 100px", // Account for nav height
-            end: "bottom 100px",
-            onEnter: () => updateActiveNavLink(section.id),
-            onEnterBack: () => updateActiveNavLink(section.id)
+    // Simple active section highlighting
+    function updateActiveNavigation() {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop <= 100) {
+                current = section.getAttribute('id');
+            }
         });
-    });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Update active nav on scroll
+    window.addEventListener('scroll', updateActiveNavigation);
+    updateActiveNavigation(); // Set initial state
     
     // CTA buttons functionality
     document.querySelectorAll('.cta-button, .project-btn').forEach(button => {
@@ -621,58 +605,27 @@ function initNavigation() {
                 e.preventDefault();
                 const target = document.getElementById(section);
                 if (target) {
-                    scrollToTarget(target);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             }
         });
     });
     
-    // Mobile menu toggle
+    // Simple mobile menu toggle
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isActive = navMenu.classList.contains('active');
-            
-            if (isActive) {
-                // Close with faster GSAP
-                gsap.to(navMenu, {
-                    maxHeight: 0,
-                    duration: 0.2,
-                    ease: "power2.inOut",
-                    onComplete: () => {
-                        navMenu.classList.remove('active');
-                        navToggle.classList.remove('active');
-                    }
-                });
-            } else {
-                // Open with faster GSAP
-                navMenu.classList.add('active');
-                navToggle.classList.add('active');
-                gsap.fromTo(navMenu, 
-                    { maxHeight: 0 },
-                    { 
-                        maxHeight: 400,
-                        duration: 0.25,
-                        ease: "power2.out"
-                    }
-                );
-            }
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
         });
         
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                if (navMenu.classList.contains('active')) {
-                    gsap.to(navMenu, {
-                        maxHeight: 0,
-                        duration: 0.2,
-                        ease: "power2.inOut",
-                        onComplete: () => {
-                            navMenu.classList.remove('active');
-                            navToggle.classList.remove('active');
-                        }
-                    });
-                }
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
             }
         });
     }

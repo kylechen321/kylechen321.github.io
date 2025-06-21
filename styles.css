@@ -319,16 +319,16 @@ body {
         flex-direction: column;
         align-items: center;
         gap: var(--space-lg);
-        padding: var(--space-lg) var(--space-lg) var(--space-xl);
+        padding: 0 var(--space-lg);
         max-height: 0;
         overflow: hidden;
         z-index: 999;
-        /* Remove CSS transitions since we're using GSAP */
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
     }
     
     .nav-menu.active {
-        /* GSAP will handle the max-height animation */
-        padding: var(--space-lg) var(--space-lg) var(--space-xl);
+        max-height: 400px;
+        padding: var(--space-lg);
     }
     
     .nav-toggle {
@@ -711,6 +711,11 @@ body {
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    scroll-margin-top: 80px; /* Account for fixed navigation */
+}
+
+.hero-section {
+    scroll-margin-top: 0; /* Hero should scroll to very top */
 }
 
 .section-header {
