@@ -27,8 +27,8 @@
     <meta property="twitter:description" content="Electrical Engineering student at UC Davis specializing in computer vision, autonomous systems, and FPGA design.">
     
     <!-- Theme Colors -->
-    <meta name="theme-color" content="#0a0f1c">
-    <meta name="msapplication-TileColor" content="#0a0f1c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -199,7 +199,7 @@
                     <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-value="4">0</div>
+                    <div class="stat-number" data-value="6">0</div>
                     <div class="stat-label">Major Projects</div>
                 </div>
                 <div class="stat-item">
@@ -348,18 +348,126 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Plant Pal Project -->
+                <div class="project-card" data-project="plant-pal" data-tech="pcb-design">
+                    <div class="project-visual">
+                        <div class="circuit-design">
+                            <div class="pcb-layout">
+                                <div class="pcb-trace trace-horizontal"></div>
+                                <div class="pcb-trace trace-vertical"></div>
+                                <div class="pcb-component component-1"></div>
+                                <div class="pcb-component component-2"></div>
+                                <div class="pcb-component component-3"></div>
+                            </div>
+                            <div class="solder-points">
+                                <div class="solder-point active"></div>
+                                <div class="solder-point"></div>
+                                <div class="solder-point active"></div>
+                            </div>
+                        </div>
+                        <div class="project-status">
+                            <div class="status-indicator"></div>
+                            <div class="status-label">PCB Design</div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Plant Pal</h3>
+                        <p class="project-description">
+                            Conducted in-depth research into potential components and technologies, achieving a 40% reduction in costs. Designed and developed a custom PCB and schematic layout with meticulous component placement and routing. Engaged in hands-on soldering and assembly of prototype boards for rigorous testing and validation.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">PCB Design</span>
+                            <span class="tech-tag">Schematic Capture</span>
+                            <span class="tech-tag">Prototyping</span>
+                            <span class="tech-tag">Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapping RC Car Project -->
+                <div class="project-card" data-project="mapping-car" data-tech="ble-robotics">
+                    <div class="project-visual">
+                        <div class="robotics-visualization">
+                            <div class="car-outline">
+                                <div class="car-body"></div>
+                                <div class="car-sensor sensor-1"></div>
+                                <div class="car-sensor sensor-2"></div>
+                                <div class="ble-signal">
+                                    <div class="signal-wave wave-1"></div>
+                                    <div class="signal-wave wave-2"></div>
+                                    <div class="signal-wave wave-3"></div>
+                                </div>
+                            </div>
+                            <div class="mapping-grid">
+                                <div class="grid-cell active"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell active"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell active"></div>
+                            </div>
+                        </div>
+                        <div class="connection-status">
+                            <div class="ble-indicator active"></div>
+                            <div class="connection-label">BLE Connected</div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Mapping RC Car</h3>
+                        <p class="project-description">
+                            Developed a remote-controlled mapping robot using Arduino Nano BLE Sense Rev2 and motor kit. Engineered Bluetooth Low Energy communication with custom UUID creation and BLE service development. Implemented sophisticated data capture and visualization system, translating raw robot movement into clear 2D spatial representations.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">BLE</span>
+                            <span class="tech-tag">Board Design</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Arduino</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Experience Section -->
         <section class="experience-section" id="experience">
             <div class="section-header">
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title">Work and Leadership Experience</h2>
                 <p class="section-subtitle">Research and development journey</p>
             </div>
             
             <div class="experience-timeline">
                 <div class="timeline-line"></div>
+                
+                <div class="experience-item">
+                    <div class="experience-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-pulse"></div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Electrical Engineer Intern</h3>
+                            <div class="experience-company">Mobivolt Livermore, CA</div>
+                            <div class="experience-period">Jun 2025 - Present</div>
+                        </div>
+                        <div class="experience-description">
+                            <p>Developed firmware using the Arduino IDE to control an automated data sampler for Mass Flow Controllers, Pressure Sensors, and Thermocouples, ensuring precise and reliable data acquisition for battery performance analysis.</p>
+                        </div>
+                        <div class="experience-achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-icon">📡</span>
+                                <span class="achievement-text">Expertly implemented RS232 communication standards for efficient bidirectional data flow</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🔧</span>
+                                <span class="achievement-text">Engineered and prototyped electronic components with hands-on soldering and assembly</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🔍</span>
+                                <span class="achievement-text">Conducted comprehensive failure analysis using Saleae logic analyzer and debugging software</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="experience-item">
                     <div class="experience-marker">
@@ -456,11 +564,16 @@
                 <div class="skill-category">
                     <h3 class="category-title">Engineering</h3>
                     <div class="skill-list">
-                        <span class="skill-tag">Autodesk Inventor</span>
                         <span class="skill-tag">Autodesk Fusion 360</span>
                         <span class="skill-tag">Quartus</span>
                         <span class="skill-tag">Soldering</span>
-                        <span class="skill-tag">Matlab</span>
+                        <span class="skill-tag">Saleae Logic Analyzer</span>
+                        <span class="skill-tag">RS232</span>
+                        <span class="skill-tag">TTL</span>
+                        <span class="skill-tag">I2C</span>
+                        <span class="skill-tag">PCIe</span>
+                        <span class="skill-tag">DDR</span>
+                        <span class="skill-tag">FPGA</span>
                     </div>
                 </div>
                 
@@ -469,8 +582,11 @@
                     <h3 class="category-title">Programming</h3>
                     <div class="skill-list">
                         <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">RISC-V</span>
+                        <span class="skill-tag">Matlab</span>
+                        <span class="skill-tag">Verilog</span>
                     </div>
                 </div>
                 
@@ -479,36 +595,12 @@
                     <h3 class="category-title">Tools</h3>
                     <div class="skill-list">
                         <span class="skill-tag">Code Composer Studio</span>
+                        <span class="skill-tag">Arduino IDE</span>
+                        <span class="skill-tag">Cadence Allegro Viewer</span>
+                        <span class="skill-tag">KiCad</span>
                         <span class="skill-tag">Jupyter Notebook</span>
-                        <span class="skill-tag">Matlab</span>
                         <span class="skill-tag">Roboflow</span>
                         <span class="skill-tag">Google Colab</span>
-                    </div>
-                </div>
-                
-                <!-- Frameworks -->
-                <div class="skill-category">
-                    <h3 class="category-title">Frameworks</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">BeautifulSoup</span>
-                        <span class="skill-tag">Requests</span>
-                        <span class="skill-tag">sklearn</span>
-                        <span class="skill-tag">Matplotlib</span>
-                        <span class="skill-tag">pydataset</span>
-                        <span class="skill-tag">numpy</span>
-                        <span class="skill-tag">pytorch</span>
-                        <span class="skill-tag">opencv</span>
-                    </div>
-                </div>
-                
-                <!-- Certifications -->
-                <div class="skill-category">
-                    <h3 class="category-title">Certifications</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Matlab (2025)</span>
-                        <span class="skill-tag">California Food Handler (2023)</span>
-                        <span class="skill-tag">Harvard CS50x (2020)</span>
-                        <span class="skill-tag">Autodesk Inventor (2019)</span>
                     </div>
                 </div>
             </div>

@@ -17,30 +17,30 @@
 }
 
 :root {
-    /* Revolutionary Color Palette */
-    --primary-bg: #0a0f1c;
-    --secondary-bg: #1a1f2e;
-    --accent-bg: #0f1419;
-    --surface-bg: #141922;
+    /* White Theme Color Palette */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --accent-bg: #f1f3f4;
+    --surface-bg: #ffffff;
     
-    /* Neon Accents */
-    --neon-blue: #00f5ff;
-    --neon-cyan: #00ffff;
-    --neon-purple: #8b5cf6;
-    --neon-pink: #ff007f;
-    --neon-green: #00ff88;
+    /* Professional Accents */
+    --neon-blue: #1a73e8;
+    --neon-cyan: #0066cc;
+    --neon-purple: #7c3aed;
+    --neon-pink: #e91e63;
+    --neon-green: #00c853;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #00f5ff 0%, #0080ff 100%);
-    --gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #ff007f 100%);
-    --gradient-accent: linear-gradient(135deg, #00ff88 0%, #00f5ff 100%);
-    --gradient-circuit: linear-gradient(90deg, transparent 0%, #00f5ff 50%, transparent 100%);
+    --gradient-primary: linear-gradient(135deg, #1a73e8 0%, #0066cc 100%);
+    --gradient-secondary: linear-gradient(135deg, #7c3aed 0%, #e91e63 100%);
+    --gradient-accent: linear-gradient(135deg, #00c853 0%, #1a73e8 100%);
+    --gradient-circuit: linear-gradient(90deg, transparent 0%, #1a73e8 50%, transparent 100%);
     
     /* Text Colors */
-    --text-primary: #ffffff;
-    --text-secondary: #a0a9c0;
-    --text-muted: #6b7280;
-    --text-accent: #00f5ff;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --text-muted: #80868b;
+    --text-accent: #1a73e8;
     
     /* Fonts */
     --font-primary: 'Space Grotesk', sans-serif;
@@ -64,7 +64,7 @@
     /* Borders */
     --border-width: 1px;
     --border-radius: 0.5rem;
-    --border-color: rgba(0, 245, 255, 0.2);
+    --border-color: rgba(26, 115, 232, 0.2);
 }
 
 html {
@@ -79,6 +79,7 @@ body {
     position: relative;
     margin: 0;
     padding: 0;
+    box-shadow: inset 0 0 0 1px rgba(26, 115, 232, 0.1);
 }
 
 /* ==========================================
@@ -128,6 +129,7 @@ body {
     justify-content: center;
     z-index: 10000;
     transition: opacity 0.5s ease, visibility 0.5s ease;
+    border: 1px solid var(--border-color);
 }
 
 .loading-content {
@@ -210,11 +212,12 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(10, 15, 28, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     transition: all 0.3s var(--ease-precision);
+    box-shadow: 0 2px 10px rgba(26, 115, 232, 0.1);
 }
 
 .nav-container {
@@ -313,7 +316,7 @@ body {
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(10, 15, 28, 0.98);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         border-top: 1px solid var(--border-color);
         flex-direction: column;
@@ -324,6 +327,7 @@ body {
         overflow: hidden;
         z-index: 999;
         transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        box-shadow: 0 4px 20px rgba(26, 115, 232, 0.1);
     }
     
     .nav-menu.active {
@@ -363,6 +367,7 @@ body {
     justify-content: center;
     overflow: hidden;
     background: radial-gradient(ellipse at center, var(--secondary-bg) 0%, var(--primary-bg) 70%);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .hero-canvas {
@@ -1222,6 +1227,327 @@ body {
     }
 }
 
+/* PCB Design Visualization */
+.pcb-layout {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    background: var(--accent-bg);
+    border-radius: 8px;
+    border: 2px solid var(--neon-green);
+}
+
+.pcb-trace {
+    position: absolute;
+    background: var(--gradient-primary);
+    border-radius: 1px;
+}
+
+.trace-horizontal {
+    width: 60%;
+    height: 2px;
+    top: 30%;
+    left: 20%;
+    animation: circuitFlow 2s ease-in-out infinite;
+}
+
+.trace-vertical {
+    width: 2px;
+    height: 40%;
+    top: 30%;
+    left: 50%;
+    animation: circuitFlow 2s ease-in-out infinite 0.5s;
+}
+
+.pcb-component {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background: var(--neon-purple);
+    border-radius: 2px;
+    border: 1px solid var(--neon-blue);
+}
+
+.component-1 {
+    top: 20%;
+    left: 30%;
+    animation: componentPulse 1.5s ease-in-out infinite;
+}
+
+.component-2 {
+    top: 60%;
+    right: 25%;
+    animation: componentPulse 1.5s ease-in-out infinite 0.5s;
+}
+
+.component-3 {
+    bottom: 20%;
+    left: 40%;
+    animation: componentPulse 1.5s ease-in-out infinite 1s;
+}
+
+.solder-points {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.solder-point {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.solder-point.active {
+    animation: solderGlow 2s ease-in-out infinite;
+}
+
+.solder-point:nth-child(1) {
+    top: 25%;
+    left: 25%;
+}
+
+.solder-point:nth-child(2) {
+    top: 50%;
+    right: 30%;
+}
+
+.solder-point:nth-child(3) {
+    bottom: 25%;
+    left: 45%;
+}
+
+.project-status {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+/* Robotics Visualization */
+.robotics-visualization {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.car-outline {
+    position: relative;
+    width: 60px;
+    height: 40px;
+}
+
+.car-body {
+    width: 100%;
+    height: 100%;
+    background: var(--neon-blue);
+    border-radius: 8px;
+    border: 2px solid var(--neon-cyan);
+    position: relative;
+}
+
+.car-body::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    animation: carHeartbeat 1.5s ease-in-out infinite;
+}
+
+.car-sensor {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--neon-pink);
+    border-radius: 50%;
+    animation: sensorScan 2s ease-in-out infinite;
+}
+
+.sensor-1 {
+    top: -3px;
+    left: 10px;
+}
+
+.sensor-2 {
+    top: -3px;
+    right: 10px;
+    animation-delay: 0.5s;
+}
+
+.ble-signal {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 20px;
+}
+
+.signal-wave {
+    position: absolute;
+    border: 1px solid var(--neon-blue);
+    border-radius: 50%;
+    opacity: 0;
+    animation: bleWave 2s ease-out infinite;
+}
+
+.wave-1 {
+    width: 10px;
+    height: 10px;
+    top: 5px;
+    left: 10px;
+}
+
+.wave-2 {
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 5px;
+    animation-delay: 0.3s;
+}
+
+.wave-3 {
+    width: 30px;
+    height: 30px;
+    top: -5px;
+    left: 0;
+    animation-delay: 0.6s;
+}
+
+.mapping-grid {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(5, 6px);
+    gap: 2px;
+}
+
+.grid-cell {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1px;
+}
+
+.grid-cell.active {
+    background: var(--neon-green);
+    animation: gridPulse 1s ease-in-out infinite;
+}
+
+.connection-status {
+    position: absolute;
+    bottom: var(--space-sm);
+    left: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.ble-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--neon-green);
+    animation: bleStatus 1s ease-in-out infinite;
+}
+
+.connection-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+/* New Animations */
+@keyframes componentPulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes solderGlow {
+    0%, 100% {
+        opacity: 0.6;
+        box-shadow: 0 0 4px var(--neon-cyan);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 12px var(--neon-cyan);
+    }
+}
+
+@keyframes carHeartbeat {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes sensorScan {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes bleWave {
+    0% {
+        opacity: 1;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes gridPulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 4px var(--neon-green);
+    }
+}
+
+@keyframes bleStatus {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
 .project-content {
     padding: var(--space-lg);
 }
@@ -1338,6 +1664,7 @@ body {
     border: 4px solid var(--primary-bg);
     position: relative;
     z-index: 1;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
 }
 
 .marker-pulse {
@@ -1488,7 +1815,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: var(--space-sm) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(26, 115, 232, 0.1);
 }
 
 .contact-item:last-child {
